@@ -45,7 +45,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 36843,
 				.header_bit_size = 32,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -54,6 +53,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -201,7 +201,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -261,7 +260,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 23036,
 				.header_bit_size = 36,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -270,6 +268,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -417,7 +416,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -484,7 +482,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 23745,
 				.header_bit_size = 36,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -493,6 +490,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -640,7 +638,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -714,7 +711,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 23342,
 				.header_bit_size = 38,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -723,6 +719,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -870,7 +867,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -951,7 +947,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 23299,
 				.header_bit_size = 36,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -960,6 +955,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -1107,7 +1103,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -1188,7 +1183,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 23228,
 				.header_bit_size = 38,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -1197,6 +1191,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -1344,7 +1339,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -1432,7 +1426,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 23309,
 				.header_bit_size = 36,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -1441,6 +1434,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -1588,7 +1582,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -1683,7 +1676,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 23276,
 				.header_bit_size = 38,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -1692,6 +1684,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -1839,7 +1832,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -1941,7 +1933,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 23308,
 				.header_bit_size = 36,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -1950,6 +1941,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -2097,7 +2089,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -2206,7 +2197,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 23252,
 				.header_bit_size = 38,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -2215,6 +2205,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -2362,7 +2353,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -2478,7 +2468,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 23278,
 				.header_bit_size = 36,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -2487,6 +2476,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -2634,7 +2624,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -2757,7 +2746,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 23335,
 				.header_bit_size = 38,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -2766,6 +2754,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -2913,7 +2902,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -3043,7 +3031,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 23332,
 				.header_bit_size = 36,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -3052,6 +3039,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -3199,7 +3187,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -3336,7 +3323,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 23263,
 				.header_bit_size = 38,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -3345,6 +3331,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -3492,7 +3479,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -3636,7 +3622,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 26141,
 				.header_bit_size = 36,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -3645,6 +3630,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -3792,7 +3778,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -3943,7 +3928,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 26301,
 				.header_bit_size = 38,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -3952,6 +3936,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -4099,7 +4084,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -4257,7 +4241,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 26326,
 				.header_bit_size = 36,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -4266,6 +4249,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -4413,7 +4397,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -4571,7 +4554,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 26165,
 				.header_bit_size = 38,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -4580,6 +4562,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -4727,7 +4710,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -4885,7 +4867,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 26113,
 				.header_bit_size = 36,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -4894,6 +4875,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -5041,7 +5023,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -5199,7 +5180,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 25794,
 				.header_bit_size = 38,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -5208,6 +5188,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -5355,7 +5336,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -5513,7 +5493,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 25432,
 				.header_bit_size = 36,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -5522,6 +5501,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -5669,7 +5649,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -5827,7 +5806,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 25104,
 				.header_bit_size = 38,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -5836,6 +5814,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -5983,7 +5962,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -6141,7 +6119,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 24968,
 				.header_bit_size = 36,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -6150,6 +6127,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -6297,7 +6275,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -6455,7 +6432,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 24776,
 				.header_bit_size = 38,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -6464,6 +6440,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -6611,7 +6588,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -6769,7 +6745,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 24687,
 				.header_bit_size = 36,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -6778,6 +6753,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -6925,7 +6901,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -7083,7 +7058,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 24523,
 				.header_bit_size = 38,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -7092,6 +7066,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -7239,7 +7214,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -7397,7 +7371,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 24694,
 				.header_bit_size = 36,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -7406,6 +7379,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -7553,7 +7527,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -7711,7 +7684,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 24709,
 				.header_bit_size = 38,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -7720,6 +7692,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -7867,7 +7840,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -8025,7 +7997,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 24722,
 				.header_bit_size = 36,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -8034,6 +8005,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -8181,7 +8153,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -8339,7 +8310,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 24755,
 				.header_bit_size = 38,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -8348,6 +8318,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -8495,7 +8466,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -8653,7 +8623,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 24690,
 				.header_bit_size = 36,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -8662,6 +8631,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -8809,7 +8779,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
@@ -8967,7 +8936,6 @@
 				},
 			},
 			.slice_params = {
-				.size = 24811,
 				.header_bit_size = 38,
 				.first_mb_in_slice = 0,
 				.slice_type = 2,
@@ -8976,6 +8944,7 @@
 				.disable_deblocking_filter_idc = 0,
 				.slice_alpha_c0_offset_div2 = 0,
 				.slice_beta_offset_div2 = 0,
+			},
 				.pred_weight_table = {
 					.chroma_log2_weight_denom = 0,
 					.luma_log2_weight_denom = 0,
@@ -9123,7 +9092,6 @@
 							{ 0, 0, },
 							{ 0, 0, },
 						},
-					},
 					},
 				},
 			},
