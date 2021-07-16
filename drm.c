@@ -232,7 +232,8 @@ static int discover_properties(int drm_fd, int connector_id, int crtc_id,
 	};
 	unsigned int i, j;
 	int rc;
-
+	printf("\n");
+	printf("%s: List of plane_id = %d \n",__func__, plane_id);
 	for (i = 0; i < ARRAY_SIZE(glue); i++) {
 		properties = drmModeObjectGetProperties(drm_fd,
 							glue[i].object_id,
@@ -242,7 +243,7 @@ static int discover_properties(int drm_fd, int connector_id, int crtc_id,
 				strerror(errno));
 			goto error;
 		}
-
+		printf("Prop Cnt = %d\n",properties->count_props);
 		for (j = 0; j < properties->count_props; j++) {
 			property = drmModeGetProperty(drm_fd,
 						      properties->props[j]);
@@ -254,6 +255,7 @@ static int discover_properties(int drm_fd, int connector_id, int crtc_id,
 
 			if (strcmp(property->name, glue[i].name) == 0) {
 				*glue[i].value = property->prop_id;
+				printf(" >> found %s\n", property->name);
 				break;
 			}
 
@@ -290,6 +292,60 @@ complete:
 	return rc;
 }
 
+static int commit_atomic_mode_ui(int drm_fd, unsigned int connector_id,
+			      unsigned int crtc_id, unsigned int plane_id,
+			      struct display_properties_ids *ids,
+			      unsigned int framebuffer_id, unsigned int width,
+			      unsigned int height, unsigned int x,
+			      unsigned int y, unsigned int scaled_width,
+			      unsigned int scaled_height, unsigned int zpos)
+{
+	drmModeAtomicReqPtr request;
+	uint32_t flags = DRM_MODE_ATOMIC_ALLOW_MODESET;
+	int rc;
+
+	request = drmModeAtomicAlloc();
+
+	printf("fb_id = %d; crtc_id = %d\n", framebuffer_id, crtc_id);
+
+	drmModeAtomicAddProperty(request, plane_id, ids->plane_fb_id,
+				 framebuffer_id);
+	drmModeAtomicAddProperty(request, plane_id, ids->plane_crtc_id,
+				 crtc_id);
+/*	drmModeAtomicAddProperty(request, plane_id, ids->plane_src_x, 0);
+	drmModeAtomicAddProperty(request, plane_id, ids->plane_src_y, 0);
+	drmModeAtomicAddProperty(request, plane_id, ids->plane_src_w,
+				 width << 16);
+	drmModeAtomicAddProperty(request, plane_id, ids->plane_src_h,
+				 height << 16);
+	drmModeAtomicAddProperty(request, plane_id, ids->plane_crtc_x, x);
+	drmModeAtomicAddProperty(request, plane_id, ids->plane_crtc_y, y);
+	drmModeAtomicAddProperty(request, plane_id, ids->plane_crtc_w,
+				 scaled_width);
+	drmModeAtomicAddProperty(request, plane_id, ids->plane_crtc_h,
+				 scaled_height);*/
+	drmModeAtomicAddProperty(request, plane_id, ids->plane_zpos, zpos);
+
+	rc = drmModeAtomicCommit(drm_fd, request, flags, NULL);
+	if (rc < 0) {
+		fprintf(stderr, "Unable to commit atomic mode for plane %d: %s\n",
+			plane_id, strerror(errno));
+		goto error;
+	}
+
+	rc = 0;
+	goto complete;
+
+error:
+	rc = -1;
+
+complete:
+	drmModeAtomicFree(request);
+
+	return rc;
+}
+
+
 static int commit_atomic_mode(int drm_fd, unsigned int connector_id,
 			      unsigned int crtc_id, unsigned int plane_id,
 			      struct display_properties_ids *ids,
@@ -324,8 +380,8 @@ static int commit_atomic_mode(int drm_fd, unsigned int connector_id,
 
 	rc = drmModeAtomicCommit(drm_fd, request, flags, NULL);
 	if (rc < 0) {
-		fprintf(stderr, "Unable to commit atomic mode: %s\n",
-			strerror(errno));
+		fprintf(stderr, "Unable to commit atomic mode for plane %d: %s\n",
+			plane_id, strerror(errno));
 		goto error;
 	}
 
@@ -496,7 +552,6 @@ static int select_plane(int drm_fd, unsigned int crtc_id, unsigned int format,
 	unsigned int i, j;
 	bool format_found;
 	int rc;
-
 	ressources = drmModeGetResources(drm_fd);
 	if (ressources == NULL) {
 		fprintf(stderr, "Unable to get DRM ressources: %s\n",
@@ -524,7 +579,10 @@ static int select_plane(int drm_fd, unsigned int crtc_id, unsigned int format,
 		goto error;
 	}
 
-	for (i = 0; i < plane_ressources->count_planes; i++) {
+	printf("select_plane: Found %d planes \n", plane_ressources->count_planes);
+
+	for (i = plane_ressources->count_planes-1; i >=0; i--) {
+		printf("Checking plane %d \n",i);
 		plane = drmModeGetPlane(drm_fd, plane_ressources->planes[i]);
 		if (plane == NULL) {
 			fprintf(stderr, "Unable to get DRM plane %d: %s\n",
@@ -591,17 +649,23 @@ static int select_plane(int drm_fd, unsigned int crtc_id, unsigned int format,
 		if (type == DRM_PLANE_TYPE_PRIMARY)
 			zpos_primary = zpos_value;
 
-		if (type != DRM_PLANE_TYPE_OVERLAY)
-			continue;
+/*		if (type != DRM_PLANE_TYPE_OVERLAY)
+			continue;*/
 
 		format_found = false;
 
-		for (j = 0; j < plane->count_formats; j++)
+		printf("Searching format 0x%02x amoung %d formats \n", format, plane->count_formats);
+		for (j = 0; j < plane->count_formats; j++){
+			printf("  >>  Format code 0x%02x\n", plane->formats[j]);
 			if (plane->formats[j] == format)
 				format_found = true;
+		}
 
 		if (format_found)
+		{
+			printf("Format found!\n");
 			break;
+		}
 
 		drmModeFreePlane(plane);
 		plane = NULL;
@@ -642,6 +706,8 @@ complete:
 	if (ressources != NULL)
 		drmModeFreeResources(ressources);
 
+printf("%s: Selected %d plane, zpos = %d\n",__func__, *plane_id, *zpos);
+//*plane_id = 39;
 	return rc;
 }
 
@@ -666,6 +732,7 @@ int display_engine_start(int drm_fd, unsigned int width, unsigned int height,
 	bool use_dmabuf = true;
 	drmModeModeInfo mode;
 	int rc;
+	struct display_properties_ids ui_ids;
 
 	rc = drmSetClientCap(drm_fd, DRM_CLIENT_CAP_ATOMIC, 1);
 	if (rc < 0) {
@@ -694,6 +761,7 @@ int display_engine_start(int drm_fd, unsigned int width, unsigned int height,
 		return -1;
 	}
 
+	//format->drm_format = DRM_FORMAT_XRGB8888; // TS: HARDCODE
 	rc = select_plane(drm_fd, crtc_id, format->drm_format, &plane_id,
 			  &zpos);
 	if (rc < 0) {
@@ -706,6 +774,13 @@ int display_engine_start(int drm_fd, unsigned int width, unsigned int height,
 	crtc_height = mode.vdisplay;
 
 	memset(setup, 0, sizeof(*setup));
+
+	rc = discover_properties(drm_fd, connector_id, crtc_id, 39 /*plane_id*/,
+				 &ui_ids);
+	if (rc < 0) {
+		fprintf(stderr, "Unable to discover UI DRM properties\n");
+	//	return -1;
+	}
 
 	rc = discover_properties(drm_fd, connector_id, crtc_id, plane_id,
 				 &setup->properties_ids);
@@ -734,7 +809,7 @@ int display_engine_start(int drm_fd, unsigned int width, unsigned int height,
 	/* Use double-buffering without DMABUF. */
 	if (!use_dmabuf)
 		count = 2;
-
+printf("%s: Use dma = %d\n",__func__, use_dmabuf);
 	*buffers = malloc(count * sizeof(**buffers));
 	memset(*buffers, 0, count * sizeof(**buffers));
 
@@ -797,6 +872,16 @@ int display_engine_start(int drm_fd, unsigned int width, unsigned int height,
 		       height, scaled_width, scaled_height, x, y);
 
 	buffer = &((*buffers)[0]);
+
+
+	rc = commit_atomic_mode_ui(drm_fd, connector_id, crtc_id, 39/*plane_id*/,
+				&ui_ids, 44/*buffer->framebuffer_id*/,
+				width, height, x, y, scaled_width,
+				scaled_height, 0);
+	if (rc < 0) {
+		fprintf(stderr, "Unable to commit UI plane\n");
+		//return -1;
+	}
 
 	rc = commit_atomic_mode(drm_fd, connector_id, crtc_id, plane_id,
 				&setup->properties_ids, buffer->framebuffer_id,
@@ -874,8 +959,8 @@ int display_engine_show(int drm_fd, unsigned int index,
 
 	video_buffer = &video_buffers[index];
 	buffer = &buffers[index];
-
-	if (!setup->use_dmabuf) {
+	if (!setup->use_dmabuf) 
+	{
 		for (i = 0; i < buffer->planes_count; i++)
 			memcpy((unsigned char *)buffer->data +
 				       buffer->offsets[i],
@@ -884,7 +969,10 @@ int display_engine_show(int drm_fd, unsigned int index,
 
 		buffer = index % 2 == 0 ? &buffers[0] : &buffers[1];
 	}
+printf(">>>%s: Entering Buffer index %d, drm_fd = %d\n",__func__, index, drm_fd);
 
+//	rc = page_flip(drm_fd, setup->crtc_id, 39/*setup->plane_id*/,
+//		       &setup->properties_ids, buffer->framebuffer_id);
 	rc = page_flip(drm_fd, setup->crtc_id, setup->plane_id,
 		       &setup->properties_ids, buffer->framebuffer_id);
 	if (rc < 0) {
@@ -892,6 +980,7 @@ int display_engine_show(int drm_fd, unsigned int index,
 			buffer->framebuffer_id);
 		return -1;
 	}
+printf(">>>%s: Done\n",__func__);
 
 	return 0;
 }

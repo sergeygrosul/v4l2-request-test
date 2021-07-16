@@ -454,7 +454,7 @@ static int set_control(int video_fd, int request_fd, unsigned int id,
 
 	rc = ioctl(video_fd, VIDIOC_S_EXT_CTRLS, &controls);
 	if (rc < 0) {
-		fprintf(stderr, "Unable to set control: %s\n", strerror(errno));
+		fprintf(stderr, "Unable to set control id= 0x%02x size = %d: %s\n", id, size, strerror(errno));
 		return -1;
 	}
 
