@@ -232,8 +232,8 @@ static int discover_properties(int drm_fd, int connector_id, int crtc_id,
 	};
 	unsigned int i, j;
 	int rc;
-	printf("\n");
-	printf("%s: List of plane_id = %d \n",__func__, plane_id);
+//	printf("\n");
+//	printf("%s: List of plane_id = %d \n",__func__, plane_id);
 	for (i = 0; i < ARRAY_SIZE(glue); i++) {
 		properties = drmModeObjectGetProperties(drm_fd,
 							glue[i].object_id,
@@ -243,7 +243,7 @@ static int discover_properties(int drm_fd, int connector_id, int crtc_id,
 				strerror(errno));
 			goto error;
 		}
-		printf("Prop Cnt = %d\n",properties->count_props);
+//		printf("Prop Cnt = %d\n",properties->count_props);
 		for (j = 0; j < properties->count_props; j++) {
 			property = drmModeGetProperty(drm_fd,
 						      properties->props[j]);
@@ -312,18 +312,6 @@ static int commit_atomic_mode_ui(int drm_fd, unsigned int connector_id,
 				 framebuffer_id);
 	drmModeAtomicAddProperty(request, plane_id, ids->plane_crtc_id,
 				 crtc_id);
-/*	drmModeAtomicAddProperty(request, plane_id, ids->plane_src_x, 0);
-	drmModeAtomicAddProperty(request, plane_id, ids->plane_src_y, 0);
-	drmModeAtomicAddProperty(request, plane_id, ids->plane_src_w,
-				 width << 16);
-	drmModeAtomicAddProperty(request, plane_id, ids->plane_src_h,
-				 height << 16);
-	drmModeAtomicAddProperty(request, plane_id, ids->plane_crtc_x, x);
-	drmModeAtomicAddProperty(request, plane_id, ids->plane_crtc_y, y);
-	drmModeAtomicAddProperty(request, plane_id, ids->plane_crtc_w,
-				 scaled_width);
-	drmModeAtomicAddProperty(request, plane_id, ids->plane_crtc_h,
-				 scaled_height);*/
 	drmModeAtomicAddProperty(request, plane_id, ids->plane_zpos, zpos);
 
 	rc = drmModeAtomicCommit(drm_fd, request, flags, NULL);
@@ -649,14 +637,14 @@ static int select_plane(int drm_fd, unsigned int crtc_id, unsigned int format,
 		if (type == DRM_PLANE_TYPE_PRIMARY)
 			zpos_primary = zpos_value;
 
-/*		if (type != DRM_PLANE_TYPE_OVERLAY)
-			continue;*/
+		if (type != DRM_PLANE_TYPE_OVERLAY)
+			continue;
 
 		format_found = false;
 
 		printf("Searching format 0x%02x amoung %d formats \n", format, plane->count_formats);
 		for (j = 0; j < plane->count_formats; j++){
-			printf("  >>  Format code 0x%02x\n", plane->formats[j]);
+			//printf("  >>  Format code 0x%02x\n", plane->formats[j]);
 			if (plane->formats[j] == format)
 				format_found = true;
 		}
@@ -706,8 +694,7 @@ complete:
 	if (ressources != NULL)
 		drmModeFreeResources(ressources);
 
-printf("%s: Selected %d plane, zpos = %d\n",__func__, *plane_id, *zpos);
-//*plane_id = 39;
+	printf("%s: Selected %d plane, zpos = %d\n",__func__, *plane_id, *zpos);
 	return rc;
 }
 
@@ -809,7 +796,6 @@ int display_engine_start(int drm_fd, unsigned int width, unsigned int height,
 	/* Use double-buffering without DMABUF. */
 	if (!use_dmabuf)
 		count = 2;
-printf("%s: Use dma = %d\n",__func__, use_dmabuf);
 	*buffers = malloc(count * sizeof(**buffers));
 	memset(*buffers, 0, count * sizeof(**buffers));
 
@@ -874,13 +860,15 @@ printf("%s: Use dma = %d\n",__func__, use_dmabuf);
 	buffer = &((*buffers)[0]);
 
 
+	// Actually I need to get primary FB id and Primary UI plane ID from the DRM driver
+	// But af a part of "proof of concept" test app, these ids are hardcoded =)
 	rc = commit_atomic_mode_ui(drm_fd, connector_id, crtc_id, 39/*plane_id*/,
 				&ui_ids, 44/*buffer->framebuffer_id*/,
 				width, height, x, y, scaled_width,
 				scaled_height, 0);
 	if (rc < 0) {
 		fprintf(stderr, "Unable to commit UI plane\n");
-		//return -1;
+		return -1;
 	}
 
 	rc = commit_atomic_mode(drm_fd, connector_id, crtc_id, plane_id,
@@ -969,10 +957,7 @@ int display_engine_show(int drm_fd, unsigned int index,
 
 		buffer = index % 2 == 0 ? &buffers[0] : &buffers[1];
 	}
-printf(">>>%s: Entering Buffer index %d, drm_fd = %d\n",__func__, index, drm_fd);
 
-//	rc = page_flip(drm_fd, setup->crtc_id, 39/*setup->plane_id*/,
-//		       &setup->properties_ids, buffer->framebuffer_id);
 	rc = page_flip(drm_fd, setup->crtc_id, setup->plane_id,
 		       &setup->properties_ids, buffer->framebuffer_id);
 	if (rc < 0) {
@@ -980,7 +965,6 @@ printf(">>>%s: Entering Buffer index %d, drm_fd = %d\n",__func__, index, drm_fd)
 			buffer->framebuffer_id);
 		return -1;
 	}
-printf(">>>%s: Done\n",__func__);
 
 	return 0;
 }
